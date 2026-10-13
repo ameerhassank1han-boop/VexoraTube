@@ -86,7 +86,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (_event, nextSession) => {
-        void applySession(nextSession);
+        // Defer profile queries until Supabase has released its auth callback lock.
+        setTimeout(() => {
+          void applySession(nextSession);
+        }, 0);
       },
     );
 
