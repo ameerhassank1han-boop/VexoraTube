@@ -8,6 +8,7 @@ import { useAuth } from "@/contexts/AuthContext";
 
 interface SidebarProps {
   onNavigate?: () => void;
+  mobile?: boolean;
 }
 
 interface NavigationItem {
