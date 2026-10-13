@@ -24,6 +24,9 @@ import CreatePost from "@/pages/CreatePost";
 import GoLive from "@/pages/GoLive";
 import LiveStream from "@/pages/LiveStream";
 import NotFound from "@/pages/NotFound";
+import Subscriptions from "@/pages/Subscriptions";
+import History from "@/pages/History";
+import Playlists from "@/pages/Playlists";
 
 function PublicOnly() {
   const { user, loading } = useAuth();
@@ -68,6 +71,9 @@ export default function App() {
           <Route path="/upload" element={<Upload />} />
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/go-live" element={<GoLive />} />
+          <Route path="/subscriptions" element={<Subscriptions />} />
+          <Route path="/history" element={<History />} />
+          <Route path="/playlists" element={<Playlists />} />
         </Route>
       </Route>
 
