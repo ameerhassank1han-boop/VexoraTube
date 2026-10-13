@@ -17,7 +17,7 @@ interface NavigationItem {
   requiresAuth?: boolean;
 }
 
-export default function Sidebar({ onNavigate }: SidebarProps) {
+export default function Sidebar({ onNavigate, mobile = false }: SidebarProps) {
   const { user } = useAuth();
   const items: NavigationItem[] = [
     { label: "Home", to: "/", icon: <Home size={21} /> },
@@ -33,7 +33,7 @@ export default function Sidebar({ onNavigate }: SidebarProps) {
   ];
 
   return (
-    <aside className="hidden lg:fixed lg:inset-y-14 lg:left-0 lg:z-30 lg:flex lg:w-60 lg:flex-col lg:border-r lg:border-gray-800 lg:bg-vexora-black lg:text-white">
+    <aside className={mobile ? "flex w-full flex-col bg-vexora-black text-white" : "hidden lg:fixed lg:inset-y-14 lg:left-0 lg:z-30 lg:flex lg:w-60 lg:flex-col lg:border-r lg:border-gray-800 lg:bg-vexora-black lg:text-white"}>
       <nav aria-label="Main navigation" className="flex-1 overflow-y-auto px-3 py-4">
         <div className="space-y-1">
           {items.filter((item) => !item.requiresAuth || user).map((item) => (
