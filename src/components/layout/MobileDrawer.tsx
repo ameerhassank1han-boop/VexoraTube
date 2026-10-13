@@ -32,7 +32,7 @@ export default function MobileDrawer({ open, onClose }: MobileDrawerProps) {
         </div>
         <div className="min-h-0 flex-1 overflow-y-auto">
           <div className="lg:hidden">
-            <Sidebar onNavigate={onClose} />
+            <Sidebar onNavigate={onClose} mobile />
           </div>
           <nav aria-label="Mobile main navigation" className="px-3 py-4">
             <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-wider text-gray-500">Explore</p>
