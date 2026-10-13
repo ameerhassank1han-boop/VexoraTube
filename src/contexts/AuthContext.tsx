@@ -7,14 +7,12 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import type { AuthError, Session, User } from "@supabase/supabase-js";
-import type { Tables } from "@/types";
+import type { AuthError, Session, User as SupabaseUser } from "@supabase/supabase-js";
+import type { User as UserProfile } from "@/types";
 import { supabase } from "@/lib/supabase";
 
-type UserProfile = Tables<"users">;
-
 interface AuthContextValue {
-  user: User | null;
+  user: SupabaseUser | null;
   session: Session | null;
   profile: UserProfile | null;
   loading: boolean;
@@ -36,7 +34,7 @@ interface AuthProviderProps {
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<SupabaseUser | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
