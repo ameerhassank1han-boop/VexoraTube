@@ -1,6 +1,7 @@
 import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
+import Layout from "@/components/layout/Layout";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
@@ -39,7 +40,6 @@ function PublicOnly() {
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
       <Route element={<PublicOnly />}>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
@@ -47,23 +47,30 @@ export default function App() {
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route element={<ProtectedRoute />}>
         <Route path="/profile-setup" element={<ProfileSetup />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/upload" element={<Upload />} />
-        <Route path="/chats" element={<Chats />} />
-        <Route path="/chat/:id" element={<Chat />} />
-        <Route path="/notifications" element={<Notifications />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/create-post" element={<CreatePost />} />
-        <Route path="/go-live" element={<GoLive />} />
       </Route>
-      <Route path="/watch/:id" element={<Watch />} />
-      <Route path="/clips" element={<Clips />} />
-      <Route path="/channel/:username" element={<Channel />} />
-      <Route path="/islamic" element={<Islamic />} />
-      <Route path="/search" element={<Search />} />
-      <Route path="/posts" element={<Posts />} />
-      <Route path="/live/:id" element={<LiveStream />} />
+
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/watch/:id" element={<Watch />} />
+        <Route path="/clips" element={<Clips />} />
+        <Route path="/islamic" element={<Islamic />} />
+        <Route path="/posts" element={<Posts />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/channel/:username" element={<Channel />} />
+        <Route path="/live/:id" element={<LiveStream />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/chats" element={<Chats />} />
+          <Route path="/chat/:id" element={<Chat />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/upload" element={<Upload />} />
+          <Route path="/create-post" element={<CreatePost />} />
+          <Route path="/go-live" element={<GoLive />} />
+        </Route>
+      </Route>
+
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
