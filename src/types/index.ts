@@ -1,4 +1,5 @@
 import type { Database } from "./database.types";
+export type { Json } from "./database.types";
 
 export type User = Database["public"]["Tables"]["users"]["Row"];
 export type Video = Database["public"]["Tables"]["videos"]["Row"];
@@ -45,5 +46,3 @@ export type PlaylistVideoUpdate = Database["public"]["Tables"]["playlist_videos"
 export type PostUpdate = Database["public"]["Tables"]["posts"]["Update"];
 export type LiveStreamUpdate = Database["public"]["Tables"]["live_streams"]["Update"];
 export type NotificationUpdate = Database["public"]["Tables"]["notifications"]["Update"];
-
-export type Json = Database["public"]["Tables"]["videos"]["Row"]["language_tracks"];
